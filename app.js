@@ -6,8 +6,12 @@
 //angular.module('nameApp', dependencies[])    
 angular.module('myFirstApp', [])
 
-.controller('MyFirstController', function(){
+//$ reserved for Angular JS
+.controller('MyFirstController', function($scope){
+    $scope.name = "FJGH";
 
-})
-
+    $scope.sayHello = function(){
+        return "Hello World";
+    };
+});
 })();
