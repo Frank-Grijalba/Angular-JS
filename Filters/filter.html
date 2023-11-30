@@ -13,7 +13,8 @@
     <h1>Custom Filters in AngularJS</h1>
     <div ng-controller="MsgController">
         Original Message: {{ sayMessage() }} <br>
-        Loves message: {{ sayLovesMessage() }}
+        Loves message: {{ sayLovesMessage() }} <br>
+        Custom Message: {{ sayLovesMessage() | customLove: "Pizza" : "Hamburguer" }}
     </div>
 </body>
 
