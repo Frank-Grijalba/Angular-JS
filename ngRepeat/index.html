@@ -12,9 +12,13 @@
 <body>
     <h1>ng-repeat</h1>
     <div ng-controller="ShoppingListController">
+        
+        <h3>Filter List #1 by:</h3>
+        <input type="text" ng-model="search">
+
         <h3>Shopping List #1:</h3>
         <ul>
-            <li ng-repeat="item in shoppingList1">{{ item }}</li>
+            <li ng-repeat="item in shoppingList1 | filter: search">{{ item }}</li>
         </ul>
 
         <h3>Modifing  the quantity of second item from the list #2:</h3>
@@ -22,12 +26,12 @@
 
         <h3>Shopping List #2:</h3>
         <ul>
-            <li ng-repeat="item in shoppingList2">{{$index + 1}}. Buy {{ item.quantity }} of {{ item.name }}(s)</li>
+            <li ng-repeat="item in shoppingList">{{$index + 1}}. Buy {{ item.quantity }} of {{ item.name }}(s)</li>
         </ul>
 
         <h3>Add new element to the list #2</h3>
-        Name: <input type="text" ng-model="name"> <br>
-        Quantity:  <input type="text" ng-model="quantity"> <br>
+        Name: <input type="text" ng-model="name">
+        Quantity:  <input type="text" ng-model="quantity">
         <button ng-click="addItem()">Add To List</button>        
     </div>
 </body>
