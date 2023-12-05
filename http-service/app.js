@@ -4,7 +4,8 @@
   angular
     .module("MenuCategoriesApp", [])
     .controller("MenuCategoriesController", MenuCategoriesController)
-    .service("MenuCategoriesService", MenuCategoriesService);
+    .service("MenuCategoriesService", MenuCategoriesService)
+    .constant('ApiBasePath', "https://www.themealdb.com/api/json/v1/1");
 
   MenuCategoriesController.$inject = ["MenuCategoriesService"];
   function MenuCategoriesController(MenuCategoriesService) {
@@ -33,14 +34,14 @@
     };
   }
 
-  MenuCategoriesService.$inject = ["$http"];
-  function MenuCategoriesService($http) {
+  MenuCategoriesService.$inject = ["$http", "ApiBasePath"];
+  function MenuCategoriesService($http, ApiBasePath) {
     var service = this;
 
     service.getMenuCategories = function () {
       var response = $http({
         method: "GET",
-        url: "https://www.themealdb.com/api/json/v1/1/categories.php",
+        url: (ApiBasePath + "/categories.php")
       });
       return response;
     };
@@ -48,7 +49,7 @@
     service.getMenuForCategory = function (categoryName){
       var response = $http({
         method: "GET",
-        url: ("https://www.themealdb.com/api/json/v1/1/filter.php"),
+        url: (ApiBasePath + "/filter.php"),
         params: {
           c: categoryName
         }
